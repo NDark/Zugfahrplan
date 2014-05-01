@@ -14,6 +14,7 @@ public class PlayerModeEditorDynamic : MonoBehaviour
 	public UpdateTrainDynamic pUpdateTrainPtr = null ;
 	public UpdateStationDynamic pUpdateStaionPtr = null ;
 	
+	
 	public bool m_DisplayEditor = false ;
 	private int m_EditorID = 0;
 	public Rect m_EditorRect = new Rect() ;
@@ -48,6 +49,7 @@ public class PlayerModeEditorDynamic : MonoBehaviour
 			Debug.LogError( "null == pUpdateStaionPtr" ) ;
 		}		
 		
+				
 		m_EditorRect = new Rect( 0 , 0 , 
 		                        m_DisplayEditorWindowWidth ,
 		                        m_DisplayEditorWindowHeight ) ;
