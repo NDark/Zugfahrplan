@@ -9,24 +9,19 @@ using UnityEngine;
 using System.Collections.Generic;
 // using System ;
 
-public enum UpdateTrainDynamicTimeMode
-{
-	SystemTime ,
-	SpecifiedTime ,
-}
 
 public class UpdateTrainDynamic : MonoBehaviour 
 {
 	LevelGeneratorDynamic pLevelGenerator = null ;
 	
 	
-	public UpdateTrainDynamicTimeMode m_TimeMode = UpdateTrainDynamicTimeMode.SystemTime ;
+	public UpdateTrainTimeMode m_TimeMode = UpdateTrainTimeMode.SystemTime ;
 	public int m_SpecifiedHour = 0 ;
 	public int m_SpecifiedMinute = 0 ;
 	
-	public void SetUpdateTrainDynamicTimeMode( UpdateTrainDynamicTimeMode _UpdateTrainDynamicTimeMode ) 
+	public void SetUpdateTrainTimeMode( UpdateTrainTimeMode _UpdateTrainTimeMode ) 
 	{
-		m_TimeMode = _UpdateTrainDynamicTimeMode ;
+		m_TimeMode = _UpdateTrainTimeMode ;
 	}
 	
 	public void SetSpecifiedTime( int _TotalMinute ) 
@@ -67,11 +62,11 @@ public class UpdateTrainDynamic : MonoBehaviour
 		
 		switch( m_TimeMode )
 		{
-		case UpdateTrainDynamicTimeMode.SystemTime:
+		case UpdateTrainTimeMode.SystemTime:
 			m_SpecifiedHour = specifiedHour = currentHour ;
 			m_SpecifiedMinute = specifiedMinute = currentMinute ;
 			break; 
-		case UpdateTrainDynamicTimeMode.SpecifiedTime :
+		case UpdateTrainTimeMode.SpecifiedTime :
 			
 			break ;
 		}
