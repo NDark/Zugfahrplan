@@ -2,6 +2,7 @@
 @file PlayerModeEditorDynamic.cs
 @author NDark
 @date 20140501 file started.
+@date 20140503 by NDark . add class member pCameraControl and code to prevent drag when windows is open.
 
 */
 using UnityEngine;
@@ -13,7 +14,7 @@ public class PlayerModeEditorDynamic : MonoBehaviour
 	public LevelGeneratorDynamic pLevelGeneratorPtr = null ;
 	public UpdateTrainDynamic pUpdateTrainPtr = null ;
 	public UpdateStationDynamic pUpdateStaionPtr = null ;
-	
+	public CameraControl pCameraControl = null ;
 	
 	public bool m_DisplayEditor = false ;
 	private int m_EditorID = 0;
@@ -49,6 +50,11 @@ public class PlayerModeEditorDynamic : MonoBehaviour
 			Debug.LogError( "null == pUpdateStaionPtr" ) ;
 		}		
 		
+		pCameraControl = this.gameObject.GetComponent<CameraControl>() ;
+		if( null == pCameraControl )
+		{
+			Debug.LogError( "null == pCameraControl" ) ;
+		}		
 				
 		m_EditorRect = new Rect( 0 , 0 , 
 		                        m_DisplayEditorWindowWidth ,
@@ -80,6 +86,7 @@ public class PlayerModeEditorDynamic : MonoBehaviour
 			if( true == GUILayout.Button( "Open Menu" ) ) 
 			{
 				m_DisplayEditor = true ;
+				pCameraControl.enabled = false ;
 			}
 		}
 		
@@ -207,6 +214,7 @@ public class PlayerModeEditorDynamic : MonoBehaviour
 		if( true == GUILayout.Button( "Close" ) ) 
 		{
 			m_DisplayEditor = false ;
+			pCameraControl.enabled = true ;
 		}
 		if( true == GUILayout.Button( "Apply" ) ) 
 		{
@@ -215,6 +223,7 @@ public class PlayerModeEditorDynamic : MonoBehaviour
 			pLevelGeneratorPtr.ReCreateTrainDisplayByData( 
               (DisplayEditorMode) m_SelectMode , 
               keyword ) ;
+			
 		}	
 		GUILayout.EndHorizontal() ;
 		
