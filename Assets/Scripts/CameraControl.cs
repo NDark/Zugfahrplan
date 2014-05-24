@@ -34,17 +34,22 @@ public class CameraControl : MonoBehaviour
 
 		if (null == trackingObject) 
 		{
-			m_MouseDown = Input.GetMouseButton( 0 ) ;
-			if( true == m_MouseDown )
-			{
-				Vector3 vecDiff = Input.mousePosition - m_MousePositionLast ;
-				Camera.main.transform.Translate( -1  * vecDiff ) ;
-				m_MousePositionLast = Input.mousePosition ;
-			}
-			else
+			if( true == Input.GetMouseButtonDown( 0 ) )
 			{
 				m_MousePositionLast = Input.mousePosition;
 			}
+			else
+			{
+				m_MouseDown = Input.GetMouseButton( 0 ) ;
+				if( true == m_MouseDown )
+				{
+					Vector3 vecDiff = Input.mousePosition - m_MousePositionLast ;
+					Camera.main.transform.Translate( -1  * vecDiff ) ;
+					m_MousePositionLast = Input.mousePosition ;
+				}
+
+			}
+			
 		}
 		else
 		{
