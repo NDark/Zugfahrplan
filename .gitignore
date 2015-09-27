@@ -13,3 +13,5 @@
 /Library/*.log
 /Library/CrashedAssetImports.txt
 *.meta
+
+/Publish/Zugfarhplan
