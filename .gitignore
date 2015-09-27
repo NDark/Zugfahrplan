@@ -11,5 +11,5 @@
 /*.userprefs
 /Library/ShaderCache
 /Library/*.log
-
+/Library/CrashedAssetImports.txt
 *.meta
